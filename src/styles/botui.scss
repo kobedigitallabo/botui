@@ -12,6 +12,9 @@
     width: 400px;
     height: 500px;
     margin: 0 auto;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
   }
 }
 
@@ -81,15 +84,17 @@
 }
 
 button.botui-actions-buttons-button {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  // margin-top: 10px;
+  // margin-bottom: 10px;
   &:not(:last-child) {
     margin-right: 10px;
   }
+
+  font-size: 1.5em;
 }
 
-.botui-actions-text-submit {
-  @media (min-width: 400px) {
-    display: none;
-  }
-}
+// .botui-actions-text-submit {
+//   @media (min-width: 400px) {
+//     display: none;
+//   }
+// }

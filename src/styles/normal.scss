@@ -11,6 +11,10 @@ a.botui-message-content-link:focus {
 
 form.botui-actions-text {
   margin: 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 button.botui-actions-buttons-button,
