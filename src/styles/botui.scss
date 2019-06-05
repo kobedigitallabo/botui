@@ -3,10 +3,17 @@
   These are the styles to create an interface of a chat/bot
 */
 
+$kdl-color: #E60012;
+$img-dir: "https://www.kdl.co.jp/recruit/img/";
+
 .botui-app-container {
-  width: 100%; // mobile-first
+  border-radius: 13px;
+  overflow: visible;
+  width: 100%;
   height: 100%;
   line-height: 1;
+  background: $kdl-color url($img-dir + "digilla_tit.png") -10px 0 no-repeat;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .8);
 
   @media (min-width: 400px) {
     width: 400px;
@@ -14,7 +21,7 @@
     margin: 0 auto;
     position: fixed;
     right: 20px;
-    bottom: 20px;
+    bottom: 45px;
   }
 }
 
@@ -91,6 +98,10 @@ button.botui-actions-buttons-button {
   }
 
   font-size: 1.5em;
+}
+
+input.botui-actions-text-input {
+  background-color: #FF707B;
 }
 
 // .botui-actions-text-submit {

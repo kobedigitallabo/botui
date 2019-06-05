@@ -8,34 +8,62 @@
 
 $font-family: 'Open Sans', sans-serif;
 $primary-color: #919291;
+$kdl-color: #E60012;
+$img-dir: 'https://www.kdl.co.jp/recruit/img/';
+
 
 .botui-container {
   font-size: 14px;
-  background-color: #fff;
-  font-family: $font-family;
-
+  margin-top: 45px;
+  background: #fff;
+  font-family: "Open Sans", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  box-shadow: 0px 3px 10px rgba(0,0,0,.8);
-  border-radius: 5px;
 }
 
 .botui-messages-container {
   padding: 10px 20px;
-
   overflow: auto;
 }
 
 .botui-actions-container {
   padding: 10px 20px;
-
-  background-color: lightskyblue;
+  background-color: $kdl-color;
 }
 
 .botui-message {
   min-height: 30px;
+  position: relative;
+
+  > div {
+    padding-left: 50px;
+    background-size: 45px;
+  }
+
+  a {
+    color: $kdl-color;
+    position: relative;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+    &::after {
+      content: '';
+      display: inline-block;
+      margin-top: -6px;
+      margin-left: 3px;
+      width: 12px;
+      height: 12px;
+      background-image: url($img-dir + "icon_ow.png");
+      background-size: contain;
+      vertical-align: middle;
+
+    }
+  }
 }
+
 
 .botui-message-content {
   padding: 7px 13px;
@@ -44,8 +72,11 @@ $primary-color: #919291;
   background-color: lighten($primary-color, 35%);
 
   &.human { // if human = true
-    color: lighten($primary-color, 40%);
-    background-color: $primary-color;
+    background-color: #D0F992;
+    &::before {
+      content: '';
+      background-image: none;
+    }
   }
 
   &.text {
@@ -60,6 +91,20 @@ $primary-color: #919291;
     padding: 5px;
     border-radius: 5px;
   }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background-image: url($img-dir + "digilla_n.png");
+    background-size: cover;
+    vertical-align: middle;
+  }
+
 }
 
 .botui-message-content-link {
@@ -73,9 +118,7 @@ $primary-color: #919291;
   padding: 5px 7px;
   font-family: $font-family;
   background-color: transparent;
-  color: darken($primary-color, 22%);
-  border-bottom: 1px solid $primary-color;
-
+  color: #fff;
   width: 85%;
 }
 
@@ -97,14 +140,9 @@ $primary-color: #919291;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  // padding: 7px 15px;
-  // border-radius: 4px;
   font-family: $font-family;
-  // background: darken($primary-color, 10%);
-  // box-shadow: 2px 3px 4px 0 rgba(0,0,0,.25);
-
+  background-color: $kdl-color;
   vertical-align: text-top;
-  background-color: lightskyblue;
 }
 
 .botui-actions-text-select {

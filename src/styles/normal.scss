@@ -11,19 +11,33 @@ a.botui-message-content-link:focus {
 
 form.botui-actions-text {
   margin: 0;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-button.botui-actions-buttons-button,
+
+input.botui-actions-text-input::placeholder {
+  color: #fff;
+}
+
+button.botui-actions-buttons-button {
+  margin: 0;
+  font-size: 100%;
+  line-height: normal;
+  vertical-align: baseline;
+  border-radius: 15px;
+  color: #fff;
+  &::placeholder {
+    color: #fff;
+  }
+}
 input.botui-actions-text-input {
   margin: 0;
   font-size: 100%;
   line-height: normal;
-  *vertical-align: middle;
   vertical-align: baseline;
+  border-radius: 15px;
 
   &::-moz-focus-inner {
     border: 0;
