@@ -7,64 +7,120 @@ $kdl-color: #E60012;
 $img-dir: "https://www.kdl.co.jp/recruit/img/";
 
 .botui-app-container {
-  border-radius: 13px;
   overflow: visible;
-  /*width: 100%;*/
-  /*height: 100%;*/
   line-height: 1;
   background: $kdl-color url($img-dir + "digilla_tit.png") -10px 0 no-repeat;
   box-shadow: 0 3px 10px rgba(0, 0, 0, .8);
-
-    width: 400px;
-    height: 500px;
-    margin: 0 auto;
-    position: fixed;
-    right: 20px;
-    bottom: 45px;
-
+  margin: 0 auto;
+  position: fixed;
 }
 
 .botui-container {
   width: 100%;
   height: 100%;
+  font-size: 14px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: hidden
+}
+.botui-messages-container {
+  overflow: auto;
+}
+
+.botui-actions-container {
+  background-color: $kdl-color;
 }
 
 .botui-message {
   margin: 10px 0;
-  min-height: 20px;
-
+  position: relative;
+  min-height: 30px;
   &:after {
     display: block;
     content: "";
     clear: both;
   }
+  a {
+    color: #e60012;
+    position: relative;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none
+    }
+    &::after {
+      content: '';
+      display: inline-block;
+      margin-top: -6px;
+      margin-left: 3px;
+      width: 12px;
+      height: 12px;
+      background-image: url($img-dir + 'icon_ow.png');
+      background-size: contain;
+      vertical-align: middle
+    }
+  }
+}
+
+.botui-message-content.loading {
+  background-color: rgba(206, 206, 206, .5);
+  line-height: 1.3;
+  text-align: center
 }
 
 .botui-message-content {
+  padding: 7px 13px;
+  border-radius: 15px;
+  color: #595a59;
+  background-color: #ebebeb;
   width: auto;
   max-width: 75%;
   display: inline-block;
-
+  height: 100%;
+  &.embed {
+    padding: 5px;
+    border-radius: 5px
+  }
   &.human {
+    background-color: #d0f992;
     float: right;
+    &::before {
+      content: '';
+      background-image: none
+    }
   }
 
   iframe {
     width: 100%;
   }
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    display: inline-block;
+    background-image: url($img-dir + 'digilla_n.png');
+    background-size: cover;
+    vertical-align: middle
+
+  }
 }
 
 .botui-message-content-image {
-  margin: 5px 0;
   display: block;
-  max-width: 200px;
-  max-height: 200px;
 }
 
 .botui-message-content-link {
   text-decoration: underline;
+  color: $kdl-color;
+  &:focus {
+    outline: thin dotted;
+    &:active, &:focus {
+      outline: 0
+    }
+  }
 }
 
 .profil {
@@ -90,8 +146,6 @@ $img-dir: "https://www.kdl.co.jp/recruit/img/";
 }
 
 button.botui-actions-buttons-button {
-  // margin-top: 10px;
-  // margin-bottom: 10px;
   &:not(:last-child) {
     margin-right: 10px;
   }
@@ -99,12 +153,147 @@ button.botui-actions-buttons-button {
   font-size: 1.5em;
 }
 
-input.botui-actions-text-input {
-  background-color: #FF707B;
+
+.botui-actions-text-input {
+  border: 0;
+  outline: 0;
+  color: #fff;
+  width: 85%;
+  background-color: #ff707b;
+
+  &::placeholder {
+    color: #fff;
+  }
 }
 
-// .botui-actions-text-submit {
-//   @media (min-width: 400px) {
-//     display: none;
-//   }
-// }
+.botui-actions-text-submit {
+  color: #fff;
+  width: 30px;
+  padding: 5px;
+  height: 30px;
+  line-height: 1;
+  border-radius: 50%;
+  border: 1px solid #919291;
+  background: #777977
+}
+
+.botui-actions-buttons-button {
+  border: 0;
+  color: #fff;
+  line-height: 1;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Open Sans", sans-serif;
+  vertical-align: text-top;
+  background-color: #e60012;
+}
+
+.botui-actions-text-select {
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+  padding: 5px 7px;
+  font-family: "Open Sans", sans-serif;
+  background-color: transparent;
+  color: #595a5a;
+  border-bottom: 1px solid #919292
+}
+
+.botui-actions-text-searchselect {
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+  padding: 5px 7px;
+  font-family: "Open Sans", sans-serif;
+  background-color: transparent;
+  color: #595a5a;
+  border-bottom: 1px solid #919292;
+
+  .dropdown-toggle {
+    border: none !important;
+  }
+  .selected-tag {
+    background-color: transparent !important;
+    border: 0 !important
+  }
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease
+}
+
+.slide-fade-enter, .slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-10px)
+}
+
+.dot {
+  width: .5rem;
+  height: .5rem;
+  border-radius: .5rem;
+  display: inline-block;
+  background-color: #919291;
+
+  &:nth-child(1) {
+    margin-left: .3rem;
+    animation: loading .6s .3s linear infinite
+  }
+  &:nth-child(2) {
+    margin-left: .3rem;
+    animation: loading .6s .2s linear infinite}
+  &:nth-child(3) {
+    animation: loading .6s .1s linear infinite}
+}
+
+@keyframes loading {
+  0% {
+    transform: translate(0, 0);
+    background-color: #ababab
+  }
+
+  25% {
+    transform: translate(0, -3px)
+  }
+
+  50% {
+    transform: translate(0, 0);
+    background-color: #ababab
+  }
+
+  75% {
+    transform: translate(0, 3px)
+  }
+
+  100% {
+    transform: translate(0, 0)
+  }
+}
+
+form.botui-actions-text {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+button.botui-actions-buttons-button, input.botui-actions-text-input {
+  margin: 0;
+  font-size: 100%;
+  line-height: normal;
+  vertical-align: baseline
+}
+
+button.botui-actions-buttons-button::-moz-focus-inner, input.botui-actions-text-input::-moz-focus-inner {
+  border: 0;
+  padding: 0
+}
+
+button.botui-actions-buttons-button {
+  cursor: pointer;
+  -webkit-appearance: button;
+    font-size: 1.5em;
+    &:not(:last-child) {
+      margin-right: 10px
+    }
+}
