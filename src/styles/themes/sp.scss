@@ -9,19 +9,20 @@ $img-dir: "https://www.kdl.co.jp/recruit/img/";
 .botui-app-container {
   border-radius: 13px;
   overflow: visible;
-  /*width: 100%;*/
-  /*height: 100%;*/
+  width: 100%;
+  height: 100%;
   line-height: 1;
   background: $kdl-color url($img-dir + "digilla_tit.png") -10px 0 no-repeat;
   box-shadow: 0 3px 10px rgba(0, 0, 0, .8);
 
+  @media (min-width: 400px) {
     width: 400px;
     height: 500px;
     margin: 0 auto;
     position: fixed;
     right: 20px;
     bottom: 45px;
-
+  }
 }
 
 .botui-container {
