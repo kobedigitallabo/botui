@@ -65,7 +65,7 @@ $img-dir: "https://www.kdl.co.jp/recruit/img/";
 }
 
 .botui-message-content.loading {
-  background-color: rgba(206, 206, 206, .5);
+  background-color: transparent;
   line-height: 1.3;
   text-align: center
 }
@@ -243,6 +243,7 @@ button.botui-actions-buttons-button {
     margin-left: .3rem;
     animation: loading .6s .2s linear infinite}
   &:nth-child(3) {
+    margin-left: .3rem;
     animation: loading .6s .1s linear infinite}
 }
 
